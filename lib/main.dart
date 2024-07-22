@@ -8,7 +8,6 @@ import 'dart:io';
 import 'dart:async';
 import 'config_manager.dart';
 import 'package:flutter/services.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Visitor Badge System',
+      title: ConfigManager.appTitle,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -32,7 +31,7 @@ class MyApp extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.done) {
             return snapshot.data ?? SignInPage();
           }
-          return CircularProgressIndicator();
+          return const CircularProgressIndicator();
         },
       ),
     );
@@ -42,9 +41,6 @@ class MyApp extends StatelessWidget {
     if (ConfigManager.maintenanceMode) {
       return MaintenancePage();
     }
-
-    PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    String currentVersion = packageInfo.version;
 
     if (ConfigManager.needsForceUpdate) {
       return UpdatePage();
@@ -62,32 +58,33 @@ class MaintenancePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.build, size: 80, color: Colors.grey),
-            SizedBox(height: 20),
+            const Icon(Icons.build, size: 80, color: Colors.grey),
+            const SizedBox(height: 20),
             Text(
               ConfigManager.maintenanceTitle,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               ConfigManager.maintenanceMessage,
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             ElevatedButton(
               onPressed: () {
                 SystemNavigator.pop();
               },
-              child: Text('OK'),
               style: ElevatedButton.styleFrom(
                 foregroundColor: Colors.white,
                 backgroundColor: Colors.blue,
-                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                 textStyle: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              child: const Text('OK'),
             ),
           ],
         ),
@@ -104,33 +101,34 @@ class UpdatePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.system_update, size: 80, color: Colors.blue),
-            SizedBox(height: 20),
+            const Icon(Icons.system_update, size: 80, color: Colors.blue),
+            const SizedBox(height: 20),
             Text(
               ConfigManager.updateTitle,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               ConfigManager.updateMessage,
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             ElevatedButton(
               onPressed: () {
                 SystemNavigator.pop();
               },
-              child: Text('Okay'),
               style: ElevatedButton.styleFrom(
                 foregroundColor: Colors.white,
                 backgroundColor: Colors.blue,
-                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                textStyle: TextStyle(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                textStyle: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              child: const Text('Okay'),
             ),
           ],
         ),

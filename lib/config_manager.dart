@@ -8,7 +8,7 @@ import 'package:flutter/services.dart';
 class ConfigManager {
   static late Map<String, dynamic> _config;
   static const String _configUrl =
-      'https://raw.githubusercontent.com/Ishan3842/badge_demo2/main/assets/config.json';
+      'https://raw.githubusercontent.com/Ishan3842/Visitor-Badge/main/assets/config.json';
   static bool _isInitialized = false;
   static bool _needsForceUpdate = false;
 
@@ -105,6 +105,7 @@ class ConfigManager {
     }
   }
 
+  static String get appTitle => _config['app_settings']['appTitle'];
   static String get updateTitle => _config['app_settings']['update_title'];
   static String get updateMessage => _config['app_settings']['update_message'];
   static String get maintenanceTitle =>
@@ -127,30 +128,4 @@ class ConfigManager {
               radix: 16) +
           0xFF000000);
   static int get apiRequestTimeout => _config['timeouts']['api_request'];
-  static Color get badgeBackgroundColor => Color(int.parse(
-          _config['ui_settings']['badge_background_color'].substring(1, 7),
-          radix: 16) +
-      0xFF000000);
-  static Color get badgeTextColor => Color(int.parse(
-          _config['ui_settings']['badge_text_color'].substring(1, 7),
-          radix: 16) +
-      0xFF000000);
-  static Color get badgeBorderColor => Color(int.parse(
-          _config['ui_settings']['badge_border_color'].substring(1, 7),
-          radix: 16) +
-      0xFF000000);
-
-  static bool get autoCut => _config['printer_settings']['auto_cut'];
-
-  static double get labelWidth => _config['badge_settings']['label_width'];
-  static double get labelHeight => _config['badge_settings']['label_height'];
-  static double get dateFontSize => _config['badge_settings']['date_font_size'];
-  static double get nameFontSizeLarge =>
-      _config['badge_settings']['name_font_size_large'];
-  static double get nameFontSizeSmall =>
-      _config['badge_settings']['name_font_size_small'];
-  static double get expirationFontSize =>
-      _config['badge_settings']['expiration_font_size'];
-  static double get photoWidth => _config['badge_settings']['photo_width'];
-  static double get photoHeight => _config['badge_settings']['photo_height'];
 }

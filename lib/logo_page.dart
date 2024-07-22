@@ -47,12 +47,12 @@ class _LogoPageState extends State<LogoPage> {
             barrierDismissible: false,
             builder: (BuildContext context) {
               return AlertDialog(
-                title: Text('Badge Expired'),
-                content: Text(
+                title: const Text('Badge Expired'),
+                content: const Text(
                     'Your badge has expired. Please contact the administrator.'),
                 actions: <Widget>[
                   TextButton(
-                    child: Text('OK'),
+                    child: const Text('OK'),
                     onPressed: () {
                       Navigator.of(context).pop();
                       SystemNavigator.pop(); // This will close the app
