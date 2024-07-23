@@ -34,7 +34,7 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
   @override
   void initState() {
     super.initState();
-    _barcodeScanner = BarcodeScanner();
+    _barcodeScanner = BarcodeScanner(formats: [BarcodeFormat.pdf417]);
     _initializeCamera();
   }
 
