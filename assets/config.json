@@ -22,6 +22,6 @@
     "primary_color": "#2196F3"
   },
   "timeouts": {
-    "api_request": 90
+    "api_request": 30
   }
 }
