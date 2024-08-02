@@ -5,7 +5,8 @@
       "add_visitor": "/addvisitor",
       "get_device_info": "/devices",
       "get_company_info": "/companies",
-      "get_users" : "/viewusers/sn"
+      "get_users" : "/viewusers/sn",
+      "get_logo" : "/logo"
     }
   },
   "app_settings": {
